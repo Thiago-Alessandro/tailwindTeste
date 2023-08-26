@@ -1,4 +1,4 @@
-<div class="shadow-xl w-1/4 rounded-md">
+<div class="shadow-xl rounded-md w-full">
 
     <div class="p-5 flex justify-between items-center">
         <p class="text-sm text-[#185e77] font-bold">Data final: {{tarefa.dataFinal | date:"dd/MM/yy"}}</p>
@@ -11,14 +11,17 @@
     </div>
 
     <div class="w-full h-1 bg-gray-400 rounded-md">
-        <div class="w-1/2 h-1 bg-[#185e77] rounded-md">
+        <div #linha class="w-{{tarefa.progresso}} h-1 bg-[#185e77] rounded-md">
         </div>
     </div>
 
     <div class="p-5">
 
-
-        <p class="text-[#185e77] font-bold">{{tarefa.nome}}</p>
+        <div class="flex justify-between items-center">
+            <p class="text-[#185e77] font-bold text-[2vh]" >{{tarefa.nome}}</p>
+            <i *ngIf="tarefa.subTarefas.length == 0" class="pi pi-star text-[#4c956c] "></i>
+        </div>
+        
 
         <div *ngFor="let subtarefa of tarefa.subTarefas; index as indice">
 
@@ -26,12 +29,13 @@
                 <div class="flex justify-start items-center">
 
                     <input type="checkbox" class="border-red-300 border-8">
-                    <p class="text-[#185e77] font-bold pl-4">{{subtarefa.nome}}</p>
+                    <p class="text-[#185e77] font-bold pl-4 text-[2vh]">{{subtarefa.nome}}</p>
 
                 </div>
 
                 <div *ngIf="indice == tarefa.subTarefas.length - 1" class="flex justify-end items-end">
-                    <i class="pi pi-star text-[#4c956c] "></i>
+                    <i (click)="favoritar(tarefa)" *ngIf="!tarefa.favoritada" class="pi pi-star text-[#4c956c] " style="font-size: 2vh;"></i>
+                    <i (click)="favoritar(tarefa)" *ngIf="tarefa.favoritada" class="pi pi-star text-[#e7da60] text-[]" style="font-size: 2vh;"></i>
                 </div>
 
             </div>

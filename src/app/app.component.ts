@@ -3,11 +3,14 @@ import { Component } from '@angular/core';
 interface Tarefa {
   nome: String,
   dataFinal: Date,
-  subTarefas: SubTarefa[]
+  subTarefas: SubTarefa[],
+  favoritada: boolean,
+  progresso: number
 }
 
 interface SubTarefa{
-  nome: String
+  nome: String,
+  feita: boolean
 }
 
 
@@ -27,15 +30,20 @@ export class AppComponent {
     dataFinal: new Date(),
     subTarefas: [
       {
-        nome:"subTarefa 1"
+        nome:"subTarefa 1",
+        feita: false
       },
       {
-        nome: "subTarefa 2"
+        nome: "subTarefa 2",
+        feita: false
       },
       {
-        nome: "subTarefa 3"
+        nome: "subTarefa 3",
+        feita: false
       }
-    ]
+    ],
+    favoritada: false,
+    progresso: 0
   }
   
   tarefa2: Tarefa = {
@@ -43,15 +51,20 @@ export class AppComponent {
     dataFinal: new Date(),
     subTarefas: [
       {
-        nome:"subTarefa 2.1"
+        nome:"subTarefa 2.1",
+        feita: false
       },
       {
-        nome: "subTarefa 2.2"
+        nome: "subTarefa 2.2",
+        feita: false
       },
       {
-        nome: "subTarefa 2.3"
+        nome: "subTarefa 2.3",
+        feita: false
       }
-    ]
+    ],
+    favoritada: true,
+    progresso: 0
   }
   
   tarefa3: Tarefa = {
@@ -59,15 +72,20 @@ export class AppComponent {
     dataFinal: new Date(),
     subTarefas: [
       {
-        nome:"subTarefa 3.1"
+        nome:"subTarefa 3.1",
+        feita: false
       },
       {
-        nome: "subTarefa 3.2"
+        nome: "subTarefa 3.2",
+        feita: false
       },
       {
-        nome: "subTarefa 3.3"
+        nome: "subTarefa 3.3",
+        feita: false
       }
-    ]
+    ],
+    favoritada: false,
+    progresso: 0
   }
 
   tarefas: Tarefa[] = [this.tarefa1,this.tarefa2,this.tarefa3]

@@ -15,10 +15,13 @@
   <app-nav></app-nav>
 
   <!-- div de respiro ( 10% ) -->
-  <div class="px-40">
+  <div class="px-40 w-screen">
 
-    <div *ngFor="let tarefa of tarefas" >
-    <app-card [tarefa]="tarefa"></app-card>
+    <div class="flex flex-wrap w-full justify-between gap-4">
+      
+      <div *ngFor="let tarefa of tarefas" class=" " style="width: 32rem;">
+        <app-card [tarefa]="tarefa" ></app-card>
+      </div>
     </div>
 
     <router-outlet></router-outlet>
